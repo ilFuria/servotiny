@@ -1,0 +1,9 @@
+#include "proto.h"
+#include "./command.h"
+#include <Arduino.h>
+
+void Mdir::execute(Servo s[],uint8_t curr){
+  CommandServo::execute(s,curr);
+  
+       s[this->_delay].write(this->angle);
+}

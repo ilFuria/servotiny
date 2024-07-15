@@ -1,0 +1,19 @@
+#include "proto.h"
+#include "./command.h"
+#include <Arduino.h>
+#include <avr/delay.h>
+
+void MstpTwo::execute(Servo s[],uint8_t curr){
+  CommandServo::execute(s,curr);
+        uint8_t inc= curr>this->angle?-1:1;
+        for(uint8_t i=curr;i<=this->angle;i+=inc){
+                s[1].write(i);
+                int x=this->_delay;
+                while(x>0)
+                {
+                  _delay_ms(1);
+                  x--;
+                }
+                
+        }
+}

@@ -1,0 +1,5 @@
+struct proto{
+        uint8_t cod;
+        uint8_t del;
+        uint8_t ang;
+};

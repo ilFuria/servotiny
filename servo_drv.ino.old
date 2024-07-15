@@ -1,0 +1,24 @@
+
+#include <Wire.h>
+
+#include "./command.h"
+void setup() {
+  // put your setup code here, to run once:
+  Wire.begin(0x50);
+  Wire.onReceive(receiveCmd);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+void receiveCmd(int bytes) {
+  uint8_t i = 0;
+  uint8_t cmds[3];
+  while (1 < Wire.available()) { // loop through all but the last
+    uint8_t c = Wire.read(); // receive byte as a character
+    cmds[i] = c;
+    i++;
+  }
+  
+}

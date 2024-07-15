@@ -1,0 +1,58 @@
+#ifndef command_h
+#define command_h
+
+#include <Servo_megaTinyCore.h>
+class CommandServo{
+        public:
+                CommandServo();
+                virtual void execute(Servo[] s, uint8_t curr)=0;
+                inline uint8_t code(){return this._code};
+                static inline CommandServo Create (uint8_t cod, uint8_t del; uint8_t ang){
+                        CommandServo cs;
+                        switch (cod){
+                                case 0x01:
+                                        cs=new Mdir();
+                                        break;
+                                case 0x02:
+                                        cs=new MstpOne();
+                                        break;
+                                case 0x03:
+                                        cs=new MstpTwo();
+                                        break;
+                                case 0x04:
+                                        cs=new Stay();
+                                        break;
+                                default:
+                                        cs=null;
+                                        break;
+                        }
+                        cs._code=cod;
+                        cs.delay=del;
+                        cs.angle=ang;
+
+                        return cs;
+                }
+        protected:
+                uint8_t _code;
+                uint8_t delay;
+                uint8_t angle;
+
+};
+class Mdir: public CommandServo{
+        public:
+                virtual void execute(Servo[] s,uint8_t curr);
+};
+
+class MstpOne : public CommandServo{
+        public:
+                virtual void execute(Servo[] s, uint8_t curr);
+};
+class MstpTwo : public CommandServo{
+        public:
+                virtual void execute(Servo[] s, uint8_t curr);
+};
+class Stay : public CommandServo{
+        public:
+                virtual void execute(Servo[] s, uint8_t curr);
+};
+#endif

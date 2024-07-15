@@ -1,0 +1,6 @@
+#include "./command.h"
+#include <Servo_megaTinyCore.h>
+
+Stay::execute(Servo s[], uint8_t curr){
+        delay(this.delay*this.ang);
+}

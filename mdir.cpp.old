@@ -1,0 +1,5 @@
+#include "./command.h"
+#include <Servo_megaTinyCore.h>
+Mdir::execute(Servo s[],uint8_t curr){
+       s[this.delay]->write(this.angle);
+}

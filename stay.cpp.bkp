@@ -1,0 +1,5 @@
+#include "./command.h"
+#include <Arduino.h>
+void Stay::execute(Servo s[], uint8_t curr, proto[] pr){
+        delay(this->_delay*this->angle);
+}

@@ -1,0 +1,10 @@
+#include <Servo_megaTinyCore.h>
+#include "./command.h"
+
+MstpOne::execute(Servo s[],uint8_t curr){
+        uint8_t inc= curr>this.angle?-1:1;
+        for(uint8_t i=curr;i<=this.angle;i+=inc){
+                s[0]->write(i);
+                delay(this.delay);
+        }
+}
