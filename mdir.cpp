@@ -8,4 +8,5 @@ void Mdir::execute(Servo s[],uint8_t curr[]){
   uint8_t i=this->_delay;
        s[i-1].write(ng);
        curr[i-1]=(ng);
+       
 }

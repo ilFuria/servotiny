@@ -6,7 +6,6 @@
 #include <EEPROM.h>
 class CommandServo;
  typedef void (*loggin)(CommandServo*);
- typedef void (*linelog)(uint8_t);
 class CommandServo{
        
         public:
@@ -16,13 +15,6 @@ class CommandServo{
                 uint8_t angle;             
                 virtual void execute(Servo s[], uint8_t curr[]);
                 static loggin l;
-                static linelog ll;
-
-                 void logCommand(){
-                  CommandServo::l(this);
-                }
-                
-
 };
 
 
@@ -51,7 +43,7 @@ class Stay : public CommandServo{
 };
 
 
-static inline CommandServo* CreateServo (uint8_t cod, uint8_t del, uint8_t ang){
+static inline CommandServo* CreateServo (uint8_t cod, uint8_t del, uint8_t ang, CommandServo* old){
         CommandServo* cs;
         switch (cod){
                 case 0x00:
@@ -81,6 +73,8 @@ static inline CommandServo* CreateServo (uint8_t cod, uint8_t del, uint8_t ang){
         cs->_code=cod;
         cs->_delay=del;
         cs->angle=ang;
+        if(old!=0)
+          delete(old);
 
                         return cs;
                 }
