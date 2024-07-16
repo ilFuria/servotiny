@@ -6,7 +6,7 @@
 
 void MstpOne::execute(Servo s[],uint8_t*curr){
   CommandServo::execute(s,curr);
-        uint8_t c=((curr[0]));
+        uint8_t c=curr[0];
         uint8_t ng=this->angle;
         uint8_t inc= c>this->angle?-1:1;
         for(uint8_t i=c;i<=ng;i+=inc){

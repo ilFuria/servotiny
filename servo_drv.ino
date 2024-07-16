@@ -26,15 +26,8 @@ void writeToDiag(CommandServo* c) {
   lcd.print(c->angle,HEX);
 
   }
-void otherlog(uint8_t ang){
-  delay(100);
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print(ang,HEX);
-  _delay_ms(1000);
-}
   loggin CommandServo::l = writeToDiag;
-  linelog CommandServo::ll=otherlog;
+  
 
 void setup() {
   // put your setup code here, to run once:
@@ -85,7 +78,7 @@ void receiveCmd(int bytes) {
   }
   uint8_t x = Wire.read();
   cmds[2] = x;
-  command = CreateServo(cmds[0], cmds[1], cmds[2]);
+  command = CreateServo(cmds[0], cmds[1], cmds[2],command);
   toProcess = true;
 }
 
@@ -100,5 +93,6 @@ void go() {
   toProcess = false;
   setBusy();
   command->execute(mot,curz);
+
   unsetBusy();
 }
