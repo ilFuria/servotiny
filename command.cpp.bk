@@ -1,4 +1,0 @@
-#include "command.h"
-void CommandServo::execute(Servo s[],uint8_t curr){
-        CommandServo::logCommand();
-}
