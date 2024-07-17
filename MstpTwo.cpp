@@ -3,8 +3,8 @@
 #include <Arduino.h>
 #include <avr/delay.h>
 
-void MstpTwo::execute(Servo s[],uint8_t curr[]){
-  CommandServo::execute(s,curr);
+void MstpTwo::execute(Servo s[],uint8_t curr[],bool* halt){
+  CommandServo::execute(s,curr,halt);
   uint8_t c=curr[1];
         uint8_t inc= c>this->angle?-1:1;
         for(uint8_t i=c;i<=this->angle;i+=inc){

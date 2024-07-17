@@ -2,10 +2,8 @@
 #include <Arduino.h>
 #include "./command.h"
 #include <avr/delay.h>
-
-
-void MstpOne::execute(Servo s[],uint8_t*curr){
-  CommandServo::execute(s,curr);
+void MstpOne::execute(Servo s[],uint8_t*curr,bool* halt){
+  CommandServo::execute(s,curr,halt);
         uint8_t c=curr[0];
         uint8_t ng=this->angle;
         uint8_t inc= c>this->angle?-1:1;

@@ -13,33 +13,33 @@ class CommandServo{
                 uint8_t _code;
                 uint8_t _delay;
                 uint8_t angle;             
-                virtual void execute(Servo s[], uint8_t curr[]);
+                virtual void execute(Servo s[], uint8_t curr[],bool* halt);
                 static loggin l;
 };
 
 
 class Coreo : public CommandServo{
         public:
-                virtual void execute(Servo s[],uint8_t curr[]) override;
+                virtual void execute(Servo s[],uint8_t curr[],bool* halt) override;
 };
 class Mdir: public CommandServo{
         public:
                 
-                virtual void execute(Servo s[],uint8_t curr[]) override;
+                virtual void execute(Servo s[],uint8_t curr[],bool* halt) override;
 };
 
 class MstpOne : public CommandServo{
         public:
                 
-                virtual void execute(Servo s[], uint8_t curr[]) override;
+                virtual void execute(Servo s[], uint8_t curr[],bool* halt) override;
 };
 class MstpTwo : public CommandServo{
         public:
-                virtual void execute(Servo s[], uint8_t curr[]) override;
+                virtual void execute(Servo s[], uint8_t curr[],bool* halt) override;
 };
 class Stay : public CommandServo{
         public:
-                virtual void execute(Servo s[], uint8_t curr[]) override;
+                virtual void execute(Servo s[], uint8_t curr[],bool* halt) override;
 };
 
 

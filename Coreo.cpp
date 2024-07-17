@@ -4,8 +4,8 @@
 #include <avr/delay.h>
 #include <EEPROM.h>
 
-void Coreo::execute(Servo s[],uint8_t curr[]){
-        CommandServo::execute(s,curr);
+void Coreo::execute(Servo s[],uint8_t curr[],bool* halt){
+        CommandServo::execute(s,curr, halt);
         
         CommandServo* ks=0;
         for (uint8_t i=0;i<this->angle;i++)
@@ -15,7 +15,7 @@ void Coreo::execute(Servo s[],uint8_t curr[]){
           
               EEPROM.get(sz,x);
               ks= (CreateServo(x.cod,x.del,x.ang,ks));
-              ks->execute(s,curr);
+              ks->execute(s,curr,halt);
               
         }
         if(ks!=0)
